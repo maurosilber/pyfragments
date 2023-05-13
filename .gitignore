@@ -1,0 +1,16 @@
+# hidden
+.*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg*
+
+# quarto
+src/pyfragments/examples/*_files/
+src/pyfragments/examples/*.html
