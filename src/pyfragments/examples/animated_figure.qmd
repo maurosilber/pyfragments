@@ -1,9 +1,10 @@
 ---
-title: "Animated figure"
 format: revealjs
 ---
 
 ## Example of an animated figure
+
+Move to the next slide to see the transitions.
 
 ```{python}
 # | output: asis
