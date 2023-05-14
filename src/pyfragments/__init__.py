@@ -16,6 +16,33 @@ _warning_comment = (
 
 
 class AnimatedFigure:
+    """Accepts or creates a matplotlib figure,
+    and outputs Markdown code to display the figure in fragments.
+
+    Must be used with "output: asis" in Quarto's code-block:
+
+    ```{python}
+    #| output: asis
+    with AnimatedFigure() as ani:
+        for i in range(2):
+            with ani.fragment():
+                plt.scatter(i, i)
+    ```
+
+    >>> with AnimatedFigure(add_warning_comment=False) as ani:
+    ...     for i in range(2):
+    ...         with ani.fragment():
+    ...             pass  # plot something here
+    ::: {.r-stack}
+    ::: {.fragment}
+    Figure(1280x960)
+    :::
+    ::: {.fragment}
+    Figure(1280x960)
+    :::
+    :::
+    """
+
     def __init__(
         self,
         fig: Figure = None,
@@ -40,7 +67,7 @@ class AnimatedFigure:
 
     @contextmanager
     def fragment(self):
-        print("::: {.fragment}")
+        print(":::: {.fragment}")
         yield
         display(self.fig)
-        print(":::")
+        print("::::")
