@@ -12,5 +12,5 @@ dist/
 *.egg*
 
 # quarto
-src/pyfragments/examples/*_files/
-src/pyfragments/examples/*.html
+examples/*_files/
+examples/*.html
