@@ -21,7 +21,10 @@ class AnimatedFigure:
         fig: Figure = None,
         *,
         add_warning_comment: bool = True,
+        **fig_kw,
     ):
+        if fig is None:
+            fig = plt.figure(**fig_kw)
         self.fig = fig
         self.add_warning_comment = add_warning_comment
 
