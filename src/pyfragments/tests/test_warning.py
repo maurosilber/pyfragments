@@ -1,15 +1,15 @@
 import matplotlib.pyplot as plt
 
-from .. import _warning_comment, animated_figure
+from .. import AnimatedFigure, _warning_comment
 
 
 def test_warning(capsys):
     fig = plt.figure()
 
-    with animated_figure(fig):
+    with AnimatedFigure(fig):
         pass
     assert _warning_comment in capsys.readouterr().out
 
-    with animated_figure(fig, add_warning_comment=False):
+    with AnimatedFigure(fig, add_warning_comment=False):
         pass
     assert _warning_comment not in capsys.readouterr().out

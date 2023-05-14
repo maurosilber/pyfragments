@@ -8,14 +8,14 @@ format: revealjs
 ```{python}
 #| output: asis
 import matplotlib.pyplot as plt
-from pyfragments import animated_figure, fragment
+from pyfragments import AnimatedFigure
 
 fig = plt.figure()
 plt.xlim(0, 10)
 plt.ylim(0, 10)
-with animated_figure(fig):
+with AnimatedFigure(fig) as ani:
     for i in range(10):
-        with fragment(fig):
+        with ani.fragment():
             plt.scatter(i, i)
 
 ```
