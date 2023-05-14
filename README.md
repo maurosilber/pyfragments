@@ -14,7 +14,7 @@ A [Revealjs](https://quarto.org/docs/presentations/revealjs/)
 presentation created with Quarto,
 which displays an *animated* matplotlib figure:
 
-![Animated figure](docs/animated_figure.gif)
+![Animated figure](https://raw.githubusercontent.com/maurosilber/pyfragments/main/docs/animated_figure.gif)
 
 This is created with the following code,
 in a Quarto `.qmd` file.
