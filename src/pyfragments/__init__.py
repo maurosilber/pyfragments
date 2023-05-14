@@ -28,19 +28,6 @@ class AnimatedFigure:
             with ani.fragment():
                 plt.scatter(i, i)
     ```
-
-    >>> with AnimatedFigure(add_warning_comment=False) as ani:
-    ...     for i in range(2):
-    ...         with ani.fragment():
-    ...             pass  # plot something here
-    ::: {.r-stack}
-    ::: {.fragment}
-    Figure(1280x960)
-    :::
-    ::: {.fragment}
-    Figure(1280x960)
-    :::
-    :::
     """
 
     def __init__(
