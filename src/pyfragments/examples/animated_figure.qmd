@@ -6,10 +6,9 @@ format: revealjs
 ## Example of an animated figure
 
 ```{python}
-# | output: asis
+#| output: asis
 import matplotlib.pyplot as plt
 from pyfragments import animated_figure, fragment
-
 
 fig = plt.figure()
 plt.xlim(0, 10)
