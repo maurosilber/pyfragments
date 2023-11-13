@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from typing import Self
 
 import matplotlib.pyplot as plt
-from IPython.display import display
+from IPython.display import Markdown, display
 from matplotlib.figure import Figure
 
 _warning_comment = (
@@ -32,7 +32,7 @@ class AnimatedFigure:
 
     def __init__(
         self,
-        fig: Figure = None,
+        fig: Figure | None = None,
         *,
         add_warning_comment: bool = True,
         **fig_kw,
@@ -45,16 +45,16 @@ class AnimatedFigure:
     def __enter__(self) -> Self:
         if self.add_warning_comment:
             print(_warning_comment)
-        print("::: {.r-stack}")
+        display(Markdown("::: {.r-stack}"))
         return self
 
     def __exit__(self, *args):
-        print(":::")
+        display(Markdown(":::"))
         plt.close(self.fig)
 
     @contextmanager
     def fragment(self):
-        print(":::: {.fragment}")
+        display(Markdown(":::: {.fragment}"))
         yield
         display(self.fig)
-        print("::::")
+        display(Markdown("::::"))
