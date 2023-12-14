@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Self
 
+import imageio
 import matplotlib.pyplot as plt
 from IPython.display import Image, Markdown, display
 from matplotlib.figure import Figure
@@ -41,6 +42,7 @@ class AnimatedFigure:
         if fig is None:
             fig = plt.figure(**fig_kw)
         self.fig = fig
+        self.last_image = None
         self.add_warning_comment = add_warning_comment
 
     def __enter__(self) -> Self:
@@ -57,7 +59,20 @@ class AnimatedFigure:
     def fragment(self):
         display(Markdown(":::: {.fragment}"))
         yield
+        # To save space,
+        # compute difference from previous image
+        # and output only the difference.
         with BytesIO() as buf:
             self.fig.savefig(buf, format="png")
+            image = imageio.imread(buf)
+        diff = image.copy()
+        diff[(image == self.last_image).all(-1)] = 0
+        self.last_image = image
+        with BytesIO() as buf:
+            imageio.imwrite(
+                buf,
+                diff,
+                format="png",  # type: ignore
+            )
             display(Image(buf.getvalue()))
         display(Markdown("::::"))
