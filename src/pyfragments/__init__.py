@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 from contextlib import contextmanager
+from io import BytesIO
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Self
 
 import matplotlib.pyplot as plt
-from IPython.display import Markdown, display
+from IPython.display import Image, Markdown, display
 from matplotlib.figure import Figure
 
 _warning_comment = (
@@ -56,5 +57,7 @@ class AnimatedFigure:
     def fragment(self):
         display(Markdown(":::: {.fragment}"))
         yield
-        display(self.fig)
+        with BytesIO() as buf:
+            self.fig.savefig(buf, format="png")
+            display(Image(buf.getvalue()))
         display(Markdown("::::"))
