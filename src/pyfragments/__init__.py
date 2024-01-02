@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from numpy import bool_
     from numpy.typing import NDArray
 
+import imageio as imageio
 import matplotlib.pyplot as plt
 from IPython.display import Image, Markdown, display
 from matplotlib.figure import Figure
