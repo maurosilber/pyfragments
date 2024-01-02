@@ -7,7 +7,9 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Self
 
-import imageio
+    from numpy import bool_
+    from numpy.typing import NDArray
+
 import matplotlib.pyplot as plt
 from IPython.display import Image, Markdown, display
 from matplotlib.figure import Figure
@@ -65,9 +67,10 @@ class AnimatedFigure:
         with BytesIO() as buf:
             self.fig.savefig(buf, format="png")
             image = imageio.imread(buf)
-        diff = image.copy()
-        diff[(image == self.last_image).all(-1)] = 0
+
+        diff = _diff(image, self.last_image) if self.last_image is not None else image
         self.last_image = image
+
         with BytesIO() as buf:
             imageio.imwrite(
                 buf,
@@ -76,3 +79,24 @@ class AnimatedFigure:
             )
             display(Image(buf.getvalue()))
         display(Markdown("::::"))
+
+
+def _erode_inplace(data: NDArray[bool_]) -> NDArray[bool_]:
+    data[0] = data[0] & data[1]
+    data[-1] = data[-2] & data[-1]
+    data[1:-1] = data[2:] & data[1:-1] & data[:-2]
+    return data
+
+
+def _erode2D_inplace(data: NDArray[bool_]) -> NDArray[bool_]:
+    _erode_inplace(data)
+    _erode_inplace(data.T)
+    return data
+
+
+def _diff(image: NDArray, last_image: NDArray):
+    diff = image.copy()
+    mask = (image == last_image).all(-1)
+    mask = _erode2D_inplace(mask)
+    diff[mask] = 0
+    return diff
