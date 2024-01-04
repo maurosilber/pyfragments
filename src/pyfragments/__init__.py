@@ -14,6 +14,7 @@ import imageio as imageio
 import matplotlib.pyplot as plt
 from IPython.display import Image, Markdown, display
 from matplotlib.figure import Figure
+from matplotlib.transforms import Bbox
 
 _warning_comment = (
     '<!-- You forgot to put "#| output: asis" at the beginning of this code-block.-->'
@@ -39,12 +40,18 @@ class AnimatedFigure:
         self,
         fig: Figure | None = None,
         *,
+        bbox_inches: Bbox
+        | tuple[tuple[float, float], tuple[float, float]]
+        | None = None,
         add_warning_comment: bool = True,
         **fig_kw,
     ):
         if fig is None:
             fig = plt.figure(**fig_kw)
+        if isinstance(bbox_inches, tuple):
+            bbox_inches = Bbox(bbox_inches)
         self.fig = fig
+        self.bbox_inches = bbox_inches
         self.last_image = None
         self.add_warning_comment = add_warning_comment
 
@@ -66,7 +73,7 @@ class AnimatedFigure:
         # compute difference from previous image
         # and output only the difference.
         with BytesIO() as buf:
-            self.fig.savefig(buf, format="png")
+            self.fig.savefig(buf, format="png", bbox_inches=self.bbox_inches)
             image = imageio.imread(buf)
 
         diff = _diff(image, self.last_image) if self.last_image is not None else image
