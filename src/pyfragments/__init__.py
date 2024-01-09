@@ -44,10 +44,9 @@ class AnimatedFigure:
         | tuple[tuple[float, float], tuple[float, float]]
         | None = None,
         add_warning_comment: bool = True,
-        **fig_kw,
     ):
         if fig is None:
-            fig = plt.figure(**fig_kw)
+            fig = plt.figure()
         if isinstance(bbox_inches, tuple):
             bbox_inches = Bbox(bbox_inches)
         self.fig = fig
