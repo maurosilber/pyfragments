@@ -34,7 +34,22 @@ class AnimatedFigure:
             with ani.fragment():
                 plt.scatter(i, i)
     ```
+
+    For debugging the presentation, check out `AnimatedFigure.config`.
     """
+
+    class config:
+        """Global config for AniamtedFigures.
+
+        Attributes:
+            flatten: bool
+                If True, renders only the last figure.
+            diff: bool
+                If True, renders only the difference in each new fragment.
+        """
+
+        flatten: bool = False
+        diff: bool = True
 
     def __init__(
         self,
@@ -61,13 +76,25 @@ class AnimatedFigure:
         return self
 
     def __exit__(self, *args):
+        if self.config.flatten:
+            display(self.fig)
         display(Markdown(":::"))
         plt.close(self.fig)
 
     @contextmanager
     def fragment(self):
+        if self.config.flatten:
+            yield
+            return
+
         display(Markdown(":::: {.fragment}"))
         yield
+
+        if not self.config.diff:
+            display(self.fig)
+            display(Markdown("::::"))
+            return
+
         # To save space,
         # compute difference from previous image
         # and output only the difference.
