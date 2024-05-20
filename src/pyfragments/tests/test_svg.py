@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from xml.dom import minidom
 
 import numpy as np
@@ -13,7 +15,7 @@ def subplots():
     return fig, ax
 
 
-def get_dom(fig):
+def get_dom(fig: Figure):
     svg = animate(fig)
     return minidom.parseString(svg.data)
 
