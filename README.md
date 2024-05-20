@@ -57,19 +57,20 @@ format: revealjs
 embed-resources: true
 ---
 
-## Example of an animated figure
+# Example of an animated figure
+
+## Animated scatterplot
 
 Move to the next slide to see the transitions.
 
 ```{python}
-import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 from pyfragments.svg import animate
 
-plt.ioff()  # prevents automatic output of png figure
-
-fig = plt.figure()
+fig = Figure()
+ax = fig.add_subplot()
 for i in range(10):
-    plt.scatter(i, i, gid=".fragment")
+    ax.scatter(i, i, gid=".fragment")
 animate(fig)
 ```
 ````
@@ -79,12 +80,17 @@ or make different elements appear at the same time,
 use `.fragment-<num>`:
 
 ```python
-plt.scatter(..., gid=".fragment-2")  # appears second
-plt.scatter(..., gid=".fragment-1")  # appears first
-plt.scatter(..., gid=".fragment-2")  # appears second
+ax.scatter(..., gid=".fragment-2")  # appears second
+ax.scatter(..., gid=".fragment-1")  # appears first
+ax.scatter(..., gid=".fragment-2")  # appears second
 ```
 
 To allow animation of images,
-such as with `plt.imshow`,
+such as with `ax.imshow`,
 it is important to disable `image.composite_image`:
-`plt.rc("image", composite_image=False)`.
+
+```python
+import matplotlib
+
+matplotlib.rc("image", composite_image=False)
+```
