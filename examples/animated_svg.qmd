@@ -1,0 +1,34 @@
+---
+format: revealjs
+embed-resources: true
+---
+
+## Example of an animated figure
+
+Move to the next slide to see the transitions.
+
+```{python}
+import matplotlib.pyplot as plt
+from pyfragments.svg import animate
+
+plt.ioff()
+
+fig = plt.figure()
+for i in range(10):
+    plt.scatter(i, i, gid=".fragment")
+animate(fig)
+```
+
+## Animated images
+
+```{python}
+import numpy as np
+rng = np.random.default_rng(0)
+
+plt.rc("image", composite_image=False)
+
+fig = plt.figure()
+for i in range(5):
+    plt.imshow(rng.random((10, 10)), gid=".fragment")
+animate(fig)
+```
