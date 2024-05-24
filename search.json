@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "examples/animated_svg.html#animated-scatterplot",
+    "href": "examples/animated_svg.html#animated-scatterplot",
+    "title": "PyFragments examples",
+    "section": "Animated scatterplot",
+    "text": "Animated scatterplot\nMove to the next slide to see the transitions.\n\n\n \n  \n   \n    \n    2024-05-24T20:13:49.966954\n    image/svg+xml\n    \n     \n      Matplotlib v3.9.0, https://matplotlib.org/"
+  },
+  {
+    "objectID": "examples/animated_svg.html#animated-images",
+    "href": "examples/animated_svg.html#animated-images",
+    "title": "PyFragments examples",
+    "section": "Animated images",
+    "text": "Animated images\nMove to the next slide to see the transitions.\n\n\n\n \n  \n   \n    \n    2024-05-24T20:13:50.059450\n    image/svg+xml\n    \n     \n      Matplotlib v3.9.0, https://matplotlib.org/"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Examples",
+    "section": "",
+    "text": "---\ntitle: \" \"\nformat: revealjs\n---\n\n## Example of an animated figure\n\nMove to the next slide to see the transitions.\n\n```{python}\n# | output: asis\nimport matplotlib.pyplot as plt\nfrom pyfragments import AnimatedFigure\n\nwith AnimatedFigure() as ani:\n    plt.xlim(0, 10)\n    plt.ylim(0, 10)\n    for i in range(10):\n        with ani.fragment():\n            plt.scatter(i, i)\n\n```\n\n\n\n\n\n\n\n\n---\ntitle: \" \"\nformat: revealjs\nembed-resources: true\n---\n\n## Animated scatterplot\n\nMove to the next slide to see the transitions.\n\n```{python}\nfrom matplotlib.figure import Figure\nfrom pyfragments.svg import animate\n\nfig = Figure()\nax = fig.add_subplot()\nfor i in range(10):\n    ax.scatter(i, i, gid=\".fragment\")\nanimate(fig)\n```\n\n## Animated images\n\nMove to the next slide to see the transitions.\n\n```{python}\nimport matplotlib\nimport numpy as np\nrng = np.random.default_rng(0)\n\nmatplotlib.rc(\"image\", composite_image=False)\n\nfig = Figure()\nax = fig.add_subplot()\nfor i in range(5):\n    ax.imshow(rng.random((10, 10)), gid=\".fragment\")\nanimate(fig)\n```"
+  },
+  {
+    "objectID": "index.html#png",
+    "href": "index.html#png",
+    "title": "Examples",
+    "section": "",
+    "text": "---\ntitle: \" \"\nformat: revealjs\n---\n\n## Example of an animated figure\n\nMove to the next slide to see the transitions.\n\n```{python}\n# | output: asis\nimport matplotlib.pyplot as plt\nfrom pyfragments import AnimatedFigure\n\nwith AnimatedFigure() as ani:\n    plt.xlim(0, 10)\n    plt.ylim(0, 10)\n    for i in range(10):\n        with ani.fragment():\n            plt.scatter(i, i)\n\n```"
+  },
+  {
+    "objectID": "index.html#svg",
+    "href": "index.html#svg",
+    "title": "Examples",
+    "section": "",
+    "text": "---\ntitle: \" \"\nformat: revealjs\nembed-resources: true\n---\n\n## Animated scatterplot\n\nMove to the next slide to see the transitions.\n\n```{python}\nfrom matplotlib.figure import Figure\nfrom pyfragments.svg import animate\n\nfig = Figure()\nax = fig.add_subplot()\nfor i in range(10):\n    ax.scatter(i, i, gid=\".fragment\")\nanimate(fig)\n```\n\n## Animated images\n\nMove to the next slide to see the transitions.\n\n```{python}\nimport matplotlib\nimport numpy as np\nrng = np.random.default_rng(0)\n\nmatplotlib.rc(\"image\", composite_image=False)\n\nfig = Figure()\nax = fig.add_subplot()\nfor i in range(5):\n    ax.imshow(rng.random((10, 10)), gid=\".fragment\")\nanimate(fig)\n```"
+  },
+  {
+    "objectID": "examples/animated_figure.html#example-of-an-animated-figure",
+    "href": "examples/animated_figure.html#example-of-an-animated-figure",
+    "title": "PyFragments examples",
+    "section": "Example of an animated figure",
+    "text": "Example of an animated figure\nMove to the next slide to see the transitions."
+  }
+]
