@@ -12,9 +12,12 @@ pip install pyfragments
 
 A [Revealjs](https://quarto.org/docs/presentations/revealjs/)
 presentation created with Quarto,
-which displays an *animated* matplotlib figure:
+which shows matplotlib figure animated with fragments
+(i.e., moving to the next slide):
 
-![Animated figure](https://raw.githubusercontent.com/maurosilber/pyfragments/main/docs/animated_figure.gif)
+![Animated figure](https://raw.githubusercontent.com/maurosilber/pyfragments/main/docs/static/animated_figure.gif)
+
+See the demo in [GitHub Pages](https://maurosilber.github.io/pyfragments).
 
 This is created with the following code,
 in a Quarto `.qmd` file.

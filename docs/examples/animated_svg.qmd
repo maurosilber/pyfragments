@@ -1,9 +1,8 @@
 ---
+title: " "
 format: revealjs
 embed-resources: true
 ---
-
-# Example of an animated figure
 
 ## Animated scatterplot
 
@@ -21,6 +20,8 @@ animate(fig)
 ```
 
 ## Animated images
+
+Move to the next slide to see the transitions.
 
 ```{python}
 import matplotlib

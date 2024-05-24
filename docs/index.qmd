@@ -1,0 +1,46 @@
+---
+slide-format: revealjs
+---
+
+```{=html}
+<style>
+    iframe {
+        aspect-ratio: 16 / 9;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+```
+
+```{python}
+# | include: false
+def example(file):
+    file_html = file.replace(".qmd", ".html")
+    with open(file) as f:
+        code = f.read()
+
+    print("<details class='code-fold'>")
+    print("````qmd")
+    print(code)
+    print("````")
+    print("</details>")
+    print(f'<iframe class="slide-deck" src="{file_html}"></iframe>')
+```
+
+# Examples
+
+## PNG
+
+```{python}
+# | echo: false
+# | output: asis
+example("examples/animated_figure.qmd")
+```
+
+## SVG
+
+```{python}
+# | echo: false
+# | output: asis
+example("examples/animated_svg.qmd")
+```
