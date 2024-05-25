@@ -112,7 +112,7 @@ title: " "
 format: revealjs
 ---
 
-## Example of an animated figure
+## Animated scatterplot
 
 Move to the next slide to see the transitions.
 
@@ -122,16 +122,15 @@ import matplotlib.pyplot as plt
 from pyfragments import AnimatedFigure
 
 with AnimatedFigure() as ani:
-    plt.xlim(0, 10)
-    plt.ylim(0, 10)
-    for i in range(10):
+    plt.xlim(-1, 3)
+    plt.ylim(-1, 3)
+    for i in range(3):
         with ani.fragment():
-            plt.scatter(i, i)
-
+            plt.scatter(i, i, s=200)
 ```
 </code></pre>
 </details>
-<iframe class="slide-deck" src="examples/animated_figure.html">
+<iframe class="slide-deck" src="examples/animated_png.html">
 </iframe>
 </section>
 <section id="svg" class="level2">
@@ -153,8 +152,8 @@ from pyfragments.svg import animate
 
 fig = Figure()
 ax = fig.add_subplot()
-for i in range(10):
-    ax.scatter(i, i, gid=".fragment")
+for i in range(3):
+    ax.scatter(i, i, s=200, gid=".fragment")
 animate(fig)
 ```
 
@@ -171,7 +170,7 @@ matplotlib.rc("image", composite_image=False)
 
 fig = Figure()
 ax = fig.add_subplot()
-for i in range(5):
+for i in range(3):
     ax.imshow(rng.random((10, 10)), gid=".fragment")
 animate(fig)
 ```
