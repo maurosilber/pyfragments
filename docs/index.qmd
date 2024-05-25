@@ -34,7 +34,7 @@ def example(file):
 ```{python}
 # | echo: false
 # | output: asis
-example("examples/animated_figure.qmd")
+example("examples/animated_png.qmd")
 ```
 
 ## SVG

@@ -14,8 +14,8 @@ from pyfragments.svg import animate
 
 fig = Figure()
 ax = fig.add_subplot()
-for i in range(10):
-    ax.scatter(i, i, gid=".fragment")
+for i in range(3):
+    ax.scatter(i, i, s=200, gid=".fragment")
 animate(fig)
 ```
 
@@ -32,7 +32,7 @@ matplotlib.rc("image", composite_image=False)
 
 fig = Figure()
 ax = fig.add_subplot()
-for i in range(5):
+for i in range(3):
     ax.imshow(rng.random((10, 10)), gid=".fragment")
 animate(fig)
 ```
