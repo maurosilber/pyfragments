@@ -82,12 +82,16 @@ class AnimatedFigure:
         plt.close(self.fig)
 
     @contextmanager
-    def fragment(self):
+    def fragment(self, index: int | None = None, /):
         if self.config.flatten:
             yield
             return
 
-        display(Markdown(":::: {.fragment}"))
+        if index is None:
+            opener = ":::: {.fragment}"
+        else:
+            opener = f":::: {{.fragment fragment-index={index}}}"
+        display(Markdown(opener))
         yield
 
         if not self.config.diff:

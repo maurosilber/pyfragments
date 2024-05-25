@@ -46,6 +46,19 @@ with AnimatedFigure() as ani:
 ```
 ````
 
+To change the order of fragments,
+or make different elements appear at the same time,
+use `ani.fragment(<num>)`:
+
+```python
+with ani.fragment(2):  # appears second
+    ax.scatter(...)
+with ani.fragment(1):  # appears first
+    ax.scatter(...)
+with ani.fragment(2):  # appears second
+    ax.scatter(...)
+```
+
 ## SVG example
 
 To use SVG images,
