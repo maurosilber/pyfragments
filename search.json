@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "examples/animated_svg.html#animated-scatterplot",
-    "href": "examples/animated_svg.html#animated-scatterplot",
-    "title": "PyFragments examples",
-    "section": "Animated scatterplot",
-    "text": "Animated scatterplot\nMove to the next slide to see the transitions.\n\n\n \n  \n   \n    \n    2024-06-03T16:57:08.689746\n    image/svg+xml\n    \n     \n      Matplotlib v3.9.0, https://matplotlib.org/"
-  },
-  {
-    "objectID": "examples/animated_svg.html#animated-images",
-    "href": "examples/animated_svg.html#animated-images",
-    "title": "PyFragments examples",
-    "section": "Animated images",
-    "text": "Animated images\nMove to the next slide to see the transitions.\n\n\n\n \n  \n   \n    \n    2024-06-03T16:57:08.780735\n    image/svg+xml\n    \n     \n      Matplotlib v3.9.0, https://matplotlib.org/"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Examples",
@@ -33,6 +19,20 @@
     "title": "Examples",
     "section": "",
     "text": "---\ntitle: \" \"\nformat: revealjs\nembed-resources: true\n---\n\n## Animated scatterplot\n\nMove to the next slide to see the transitions.\n\n```{python}\nfrom matplotlib.figure import Figure\nfrom pyfragments.svg import animate\n\nfig = Figure()\nax = fig.add_subplot()\nfor i in range(3):\n    ax.scatter(i, i, s=200, gid=\".fragment\")\nanimate(fig)\n```\n\n## Animated images\n\nMove to the next slide to see the transitions.\n\n```{python}\nimport matplotlib\nimport numpy as np\nrng = np.random.default_rng(0)\n\nmatplotlib.rc(\"image\", composite_image=False)\n\nfig = Figure()\nax = fig.add_subplot()\nfor i in range(3):\n    ax.imshow(rng.random((10, 10)), gid=\".fragment\")\nanimate(fig)\n```"
+  },
+  {
+    "objectID": "examples/animated_svg.html#animated-scatterplot",
+    "href": "examples/animated_svg.html#animated-scatterplot",
+    "title": "PyFragments examples",
+    "section": "Animated scatterplot",
+    "text": "Animated scatterplot\nMove to the next slide to see the transitions.\n\n\n \n  \n   \n    \n    2024-07-01T17:01:35.931562\n    image/svg+xml\n    \n     \n      Matplotlib v3.9.0, https://matplotlib.org/"
+  },
+  {
+    "objectID": "examples/animated_svg.html#animated-images",
+    "href": "examples/animated_svg.html#animated-images",
+    "title": "PyFragments examples",
+    "section": "Animated images",
+    "text": "Animated images\nMove to the next slide to see the transitions.\n\n\n\n \n  \n   \n    \n    2024-07-01T17:01:36.007722\n    image/svg+xml\n    \n     \n      Matplotlib v3.9.0, https://matplotlib.org/"
   },
   {
     "objectID": "examples/animated_png.html#animated-scatterplot",
