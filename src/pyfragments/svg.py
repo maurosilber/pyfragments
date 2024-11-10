@@ -77,7 +77,7 @@ def extract_classes_from_gid(buf: bytes, /):
     for e in dom.getElementsByTagName("g"):
         _extract_classes_from_element(e)
     for e in dom.getElementsByTagName("image"):
-        _extract_classes_from_element(e)
+        _extract_classes_from_image(e)
     with io.StringIO() as b:
         dom.writexml(b)
         return b.getvalue()
