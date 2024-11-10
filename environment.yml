@@ -1,7 +1,0 @@
-name: pyfragments
-channels:
-  - conda-forge
-dependencies:
-  - quarto
-  - jupyter
-  - matplotlib

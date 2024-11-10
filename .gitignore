@@ -1,16 +1,13 @@
-# hidden
+# ignore all hidden files
 .*
+# except
+!.gitignore
+!.gitattributes
+!.github/
+!.pre-commit-config.yaml
+!.copier-answers.yml
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
+# Python
+__pycache__
 *.py[cod]
 *$py.class
-
-# Distribution / packaging
-build/
-dist/
-*.egg*
-
-# quarto
-examples/*_files/
-examples/*.html
