@@ -26,11 +26,16 @@ dependencies = {
   nbclient = "*",
 }
 tasks = {
-  docs = {
+  render = {
     cwd = "docs",
     cmd = "quarto render",
     inputs = ["src/", "docs/**/*.qmd", "docs/_quarto.yml"],
     outputs = ["docs/_site"],
+  },
+  publish = {
+    cwd = "docs",
+    cmd = "quarto publish gh-pages --no-prompt --no-render",
+    depends-on = ["render"],
   }
 }
 
