@@ -4,7 +4,7 @@ import io
 from typing import TYPE_CHECKING
 from xml.dom import minidom
 
-import IPython.display
+from IPython.display import Markdown
 
 if TYPE_CHECKING:
     from matplotlib.figure import Figure
@@ -30,7 +30,8 @@ def animate(fig: Figure, **savefig):
         fig.savefig(buf, format="svg", **savefig)
         svg = buf.getvalue()
     svg = extract_classes_from_gid(svg)
-    return IPython.display.SVG(svg)
+    ix = svg.find("<svg ")
+    return Markdown(svg[ix:])
 
 
 def _extract_classes_from_element(element: minidom.Element, /):

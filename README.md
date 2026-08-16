@@ -24,7 +24,6 @@ in a Quarto `.qmd` file.
 
 ````qmd
 ---
-title: " "
 format: revealjs
 ---
 
@@ -35,7 +34,7 @@ Move to the next slide to see the transitions.
 ```{python}
 # | output: asis
 import matplotlib.pyplot as plt
-from pyfragments import AnimatedFigure
+from pyfragments.png import AnimatedFigure
 
 with AnimatedFigure() as ani:
     plt.xlim(-1, 3)
@@ -69,13 +68,9 @@ with ani.fragment(2):  # appears second
 To use SVG images,
 each call to a `matplotlib` function must include a group id (`gid`) with a value of `.fragment`.
 
-Note: it is important to set `embed-resources: true`
-in the YAML options.
-
 ````qmd
 ---
 format: revealjs
-embed-resources: true
 ---
 
 # Example of an animated figure

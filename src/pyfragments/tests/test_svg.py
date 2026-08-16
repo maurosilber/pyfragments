@@ -16,8 +16,8 @@ def subplots():
 
 
 def get_dom(fig: Figure):
-    svg = animate(fig)
-    return minidom.parseString(svg.data)
+    svg = animate(fig).data
+    return minidom.parseString(svg)
 
 
 @mark.parametrize(
