@@ -3,6 +3,10 @@ project:
 
 website:
   title: "PyFragments examples"
+  navbar:
+    left:
+      - examples/animated_png.qmd
+      - examples/animated_svg.qmd
 
 format:
   html:

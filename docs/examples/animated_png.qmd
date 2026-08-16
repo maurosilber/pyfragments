@@ -1,5 +1,4 @@
 ---
-title: " "
 format: revealjs
 ---
 
@@ -10,7 +9,7 @@ Move to the next slide to see the transitions.
 ```{python}
 # | output: asis
 import matplotlib.pyplot as plt
-from pyfragments import AnimatedFigure
+from pyfragments.png import AnimatedFigure
 
 with AnimatedFigure() as ani:
     plt.xlim(-1, 3)

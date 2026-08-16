@@ -2,33 +2,13 @@
 channels = ["conda-forge"]
 platforms = ["osx-arm64", "linux-64", "win-64"]
 
-[tasks]
-docs-open = {
-  cwd = "docs",
-  cmd = "open _site/index.html",
-  depends-on = ["docs-render"],
-}
-docs-render = {
-  cwd = "docs",
-  cmd = "quarto render",
-  inputs = ["src/", "docs/*.qmd", "docs/_quarto.yml"],
-  outputs = ["docs/_site"],
-}
-
 [dependencies]
-python = ">=3.9"
-quarto = ">=1.5.57,<2"
-matplotlib = ">=3.9.2,<4"
-imageio = ">=2.36.0,<3"
-ipykernel = ">=6.29.5,<7"
+matplotlib = "*"
+imageio = "*"
+ipykernel = "*"
 
-[environments]
-default = ["test", "py39", "lint", "build"]
-py310 = ["test", "py310"]
-py311 = ["test", "py311"]
-py312 = ["test", "py312"]
-py313 = ["test", "py313"]
-py314 = ["test", "py314"]
+[pypi-dependencies]
+pyfragments.path = "."
 
 [feature]
 py39.dependencies.python = "3.9.*"
@@ -37,6 +17,22 @@ py311.dependencies.python = "3.11.*"
 py312.dependencies.python = "3.12.*"
 py313.dependencies.python = "3.13.*"
 py314.dependencies.python = "3.14.*"
+
+[feature.quarto]
+dependencies = {
+  quarto = "*",
+  pyyaml = "*",
+  nbformat = "*",
+  nbclient = "*",
+}
+tasks = {
+  docs = {
+    cwd = "docs",
+    cmd = "quarto render",
+    inputs = ["src/", "docs/**/*.qmd", "docs/_quarto.yml"],
+    outputs = ["docs/_site"],
+  }
+}
 
 [feature.lint]
 dependencies = {
@@ -56,3 +52,11 @@ tasks = {
 [feature.test]
 dependencies = { pytest = "*" }
 tasks = { test = "pytest --doctest-modules" }
+
+[environments]
+default = ["test", "py39", "lint", "build", "quarto"]
+py310 = ["test", "py310"]
+py311 = ["test", "py311"]
+py312 = ["test", "py312"]
+py313 = ["test", "py313"]
+py314 = ["test", "py314"]

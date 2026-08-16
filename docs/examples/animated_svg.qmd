@@ -1,7 +1,5 @@
 ---
-title: " "
 format: revealjs
-embed-resources: true
 ---
 
 ## Animated scatterplot
@@ -16,14 +14,18 @@ fig = Figure()
 ax = fig.add_subplot()
 for i in range(3):
     ax.scatter(i, i, s=200, gid=".fragment")
+
 animate(fig)
 ```
+
+---
 
 ## Animated images
 
 Move to the next slide to see the transitions.
 
 ```{python}
+#| output: asis
 import matplotlib
 import numpy as np
 rng = np.random.default_rng(0)
