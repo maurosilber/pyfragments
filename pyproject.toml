@@ -15,7 +15,8 @@ keywords = [
   "revealjs",
 ]
 classifiers = ["Programming Language :: Python :: 3"]
-dependencies = ["imageio", "ipykernel", "matplotlib"]
+dependencies = ["ipykernel", "matplotlib"]
+optional-dependencies = { "png" = ["imageio"] }
 
 [project.urls]
 Documentation = "https://maurosilber.github.io/pyfragments"

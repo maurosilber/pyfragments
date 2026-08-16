@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from .. import AnimatedFigure, _warning_comment
+from ..png import AnimatedFigure, _warning_comment
 
 
 def test_warning(capsys):
