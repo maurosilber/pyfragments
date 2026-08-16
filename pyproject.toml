@@ -1,6 +1,6 @@
 [project]
 name = "pyfragments"
-version = "0.4.1"
+version = "0.5.0"
 description = "Add animations to revealjs presentations from Python code-blocks."
 readme = "README.md"
 requires-python = ">=3.9"
