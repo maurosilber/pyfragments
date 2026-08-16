@@ -46,7 +46,7 @@ tasks = { lint = "prek --all-files" }
 dependencies = { uv = "*" }
 tasks = {
   build = "uv build",
-  publish = "uv publish",
+  _publish = "uv publish",
 }
 
 [feature.test]
